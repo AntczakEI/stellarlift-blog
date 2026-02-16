@@ -1,100 +1,83 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stellar Lift Blog</title>
-  <meta name="description" content="Training, hydration, and recovery — Track. Improve. Repeat." />
-  <link rel="stylesheet" href="/styles.css" />
-</head>
+---
+layout: default
+title: Home
+description: Track. Improve. Repeat. Practical guides for hydration, training, and recovery.
+---
 
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">
-        <span class="brand-mark">★</span>
-        <span class="brand-text">Stellar Lift Blog</span>
-      </a>
+<section class="hero">
+  <p class="eyebrow">Stellar Lift Blog</p>
+  <h1>Track. Improve. Repeat.</h1>
+  <p class="subhead">
+    Practical, no-nonsense guides for hydration, training, and recovery — built to support the Stellar Lift health ecosystem.
+  </p>
 
-      <nav class="nav">
-        <a href="/" class="nav-link active">Home</a>
-        <a href="/hydration.html" class="nav-link">Hydration</a>
-        <a href="/training.html" class="nav-link">Training</a>
-        <a href="/recovery.html" class="nav-link">Recovery</a>
-        <a href="/about.html" class="nav-link">About</a>
-      </nav>
-    </div>
-  </header>
+  <div class="hero-cta">
+    <a class="btn" href="{{ "/hydration.html" | relative_url }}">Start with Hydration</a>
+    <a class="btn btn-ghost" href="{{ "/training.html" | relative_url }}">Training</a>
+    <a class="btn btn-ghost" href="{{ "/recovery.html" | relative_url }}">Recovery</a>
+  </div>
+</section>
 
-  <main class="container">
-    <section class="hero">
-      <p class="eyebrow">Track. Improve. Repeat.</p>
-      <h1>Simple, practical guides for hydration, training, and recovery.</h1>
-      <p class="subhead">
-        No fluff. Just actionable tips — built around the Stellar Lift ecosystem.
+<section class="section">
+  <h2>Featured sections</h2>
+  <div class="grid">
+    <article class="card">
+      <div class="card-meta">Hydration</div>
+      <h3 class="card-title">Hydration guides</h3>
+      <p class="card-desc">Water intake, electrolytes, mistakes, and simple rules that work.</p>
+      <p style="margin-top:10px;">
+        <a class="btn btn-ghost" href="{{ "/hydration.html" | relative_url }}">Open</a>
       </p>
+    </article>
 
-      <div class="hero-cta">
-        <a class="btn" href="/hydration.html">Start with Hydration</a>
-        <a class="btn btn-ghost" href="/training.html">Go to Training</a>
-      </div>
-    </section>
+    <article class="card">
+      <div class="card-meta">Training</div>
+      <h3 class="card-title">Training guides</h3>
+      <p class="card-desc">Templates, progression, and consistency without overthinking.</p>
+      <p style="margin-top:10px;">
+        <a class="btn btn-ghost" href="{{ "/training.html" | relative_url }}">Open</a>
+      </p>
+    </article>
 
-    <section class="section">
-      <h2>Latest</h2>
+    <article class="card">
+      <div class="card-meta">Recovery</div>
+      <h3 class="card-title">Recovery basics</h3>
+      <p class="card-desc">Sleep, soreness, mobility — the boring stuff that makes you better.</p>
+      <p style="margin-top:10px;">
+        <a class="btn btn-ghost" href="{{ "/recovery.html" | relative_url }}">Open</a>
+      </p>
+    </article>
+  </div>
+</section>
 
-      <div class="grid">
-        <article class="card">
-          <div class="card-meta">Hydration</div>
-          <h3 class="card-title"><a href="/posts/water-intake-basics.html">How much water do you really need?</a></h3>
-          <p class="card-desc">A practical baseline + quick adjustments for training, heat, and caffeine.</p>
-        </article>
+<section class="section">
+  <h2>Apps</h2>
+  <div class="grid">
+    <article class="card">
+      <div class="card-meta">App</div>
+      <h3 class="card-title">Water Tracker</h3>
+      <p class="card-desc">Simple daily hydration tracking.</p>
+      <p style="margin-top:10px;">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.stellarlift.watertracker" target="_blank" rel="noopener">Open on Google Play</a>
+      </p>
+    </article>
 
-        <article class="card">
-          <div class="card-meta">Training</div>
-          <h3 class="card-title"><a href="/posts/progressive-overload.html">Progressive overload: the no-BS version</a></h3>
-          <p class="card-desc">How to progress week to week without burning out.</p>
-        </article>
+    <article class="card">
+      <div class="card-meta">App</div>
+      <h3 class="card-title">Training Tracker</h3>
+      <p class="card-desc">Log workouts fast. Stay consistent.</p>
+      <p style="margin-top:10px;">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.stellarlift.trainingtracker" target="_blank" rel="noopener">Open on Google Play</a>
+      </p>
+    </article>
 
-        <article class="card">
-          <div class="card-meta">Recovery</div>
-          <h3 class="card-title"><a href="/posts/sleep-basics.html">Sleep basics that actually move the needle</a></h3>
-          <p class="card-desc">Simple rules to improve recovery — even with a busy schedule.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="banner">
-        <div>
-          <h2 class="banner-title">Get the apps</h2>
-          <p class="banner-desc">
-            Use Stellar Lift apps to track habits that matter. The blog shows you what to do — the apps help you stick to it.
-          </p>
-        </div>
-        <div class="banner-actions">
-          <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.stellarlift.watertracker" target="_blank" rel="noopener">Water Tracker</a>
-          <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.stellarlift.trainingtracker" target="_blank" rel="noopener">Training Tracker</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <div class="footer-brand">Stellar Lift</div>
-        <div class="footer-small">© <span id="year"></span> Stellar Lift. All rights reserved.</div>
-      </div>
-      <div class="footer-right">
-        <a href="/privacy.html">Privacy</a>
-        <a href="/contact.html">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+    <article class="card">
+      <div class="card-meta">Next</div>
+      <h3 class="card-title">Stellar Lift ecosystem</h3>
+      <p class="card-desc">More modules are coming. Same mission.</p>
+      <p style="margin-top:10px;">
+        <a class="btn btn-ghost" href="{{ "/about.html" | relative_url }}">Learn more</a>
+      </p>
+    </article>
+  </div>
+</section>
