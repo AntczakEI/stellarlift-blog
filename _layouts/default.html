@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/styles.css" | relative_url }}">
+  </head>
+  <body>
+    <header style="padding:16px 0;">
+      <div style="max-width:980px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;">
+        <a href="{{ "/" | relative_url }}" style="text-decoration:none;font-weight:700;">{{ site.title }}</a>
+        <nav style="display:flex;gap:14px;">
+          <a href="{{ "/" | relative_url }}">Home</a>
+          <a href="{{ "/hydration.html" | relative_url }}">Hydration</a>
+        </nav>
+      </div>
+    </header>
+
+    <main style="max-width:980px;margin:0 auto;padding:16px;">
+      {{ content }}
+    </main>
+  </body>
+</html>
