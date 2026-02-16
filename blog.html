@@ -1,0 +1,49 @@
+---
+layout: default
+title: Blog
+description: All articles from Stellar Lift Blog.
+---
+
+<section class="hero">
+  <p class="eyebrow">Blog</p>
+  <h1>All articles</h1>
+  <p class="subhead">Latest posts first. Clean and simple.</p>
+</section>
+
+<section class="section">
+  {% if site.posts and site.posts.size > 0 %}
+    <div class="grid">
+      {% for post in site.posts %}
+        <article class="card">
+          {% if post.categories and post.categories.size > 0 %}
+            <div class="card-meta">{{ post.categories[0] }}</div>
+          {% else %}
+            <div class="card-meta">Article</div>
+          {% endif %}
+
+          <h3 class="card-title">
+            <a href="{{ post.url | relative_url }}" style="text-decoration:none;">
+              {{ post.title }}
+            </a>
+          </h3>
+
+          {% if post.description %}
+            <p class="card-desc">{{ post.description }}</p>
+          {% else %}
+            <p class="card-desc">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          {% endif %}
+
+          <p style="margin-top:10px;color:rgba(255,255,255,.55);font-size:13px;">
+            {{ post.date | date: "%Y-%m-%d" }}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card">
+      <div class="card-meta">Info</div>
+      <h3 class="card-title">No posts yet</h3>
+      <p class="card-desc">Add your first post to the <code>_posts</code> folder and it will show up here automatically.</p>
+    </div>
+  {% endif %}
+</section>
