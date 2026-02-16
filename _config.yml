@@ -1,0 +1,13 @@
+title: Stellar Lift Blog
+description: Track. Improve. Repeat. The Stellar Lift health ecosystem.
+url: "https://blog.stellarliftapp.com"
+baseurl: ""
+
+permalink: /:categories/:title/
+
+markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
