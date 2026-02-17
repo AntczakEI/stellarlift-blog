@@ -41,5 +41,6 @@ Otherwise, water + normal food is enough.
 
 <div class="hero-cta">
   <a class="btn" href="https://play.google.com/store/apps/details?id=com.stellarlift.watertracker" target="_blank" rel="noopener">Track it with Water Tracker</a>
-  <a class="btn btn-ghost" href="{{ "/blog.html" | relative_url }}">Back to Blog</a>
+  <a class="btn btn-ghost" href="{{ "/blog/" | relative_url }}">Back to Blog</a>
+
 </div>
