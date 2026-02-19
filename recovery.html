@@ -18,10 +18,11 @@ permalink: /recovery/
 <section class="section">
   <h2>Latest in Recovery</h2>
 
-  {% assign recovery_posts = site.categories.recovery %}
+  {% assign recovery_posts = site.posts | where_exp: "post", "post.categories contains 'recovery'" %}
+
   {% if recovery_posts and recovery_posts.size > 0 %}
     <div class="grid">
-      {% for post in recovery_posts %}
+      {% for post in recovery_posts limit: 6 %}
         <article class="card">
           <div class="card-meta">Recovery</div>
 
@@ -43,38 +44,18 @@ permalink: /recovery/
         </article>
       {% endfor %}
     </div>
+
+    <div class="hero-cta" style="margin-top:16px;">
+      <a class="btn btn-ghost" href="{{ "/blog/" | relative_url }}">View all articles</a>
+    </div>
   {% else %}
     <div class="card">
       <div class="card-meta">Recovery</div>
       <h3 class="card-title">No recovery posts yet</h3>
-      <p class="card-desc">Add a post with <code>categories: [recovery]</code> in <code>_posts</code> and it will show up here automatically.</p>
+      <p class="card-desc">Add a post with <code>categories: [recovery]</code> and it will show up here automatically.</p>
       <p style="margin-top:10px;">
-        <a class="btn btn-ghost" href="{{ "/blog/" | relative_url }}">Open Blog</a>
+        <a class="btn btn-ghost" href="{{ "/blog/" | relative_url }}">Go to Blog</a>
       </p>
     </div>
   {% endif %}
-</section>
-
-<section class="section">
-  <h2>Planned topics</h2>
-
-  <div class="grid">
-    <article class="card">
-      <div class="card-meta">Recovery</div>
-      <h3 class="card-title">Soreness: what’s normal vs not</h3>
-      <p class="card-desc">When to push and when to back off.</p>
-    </article>
-
-    <article class="card">
-      <div class="card-meta">Recovery</div>
-      <h3 class="card-title">Sauna: does it help?</h3>
-      <p class="card-desc">What it actually does (and doesn’t).</p>
-    </article>
-
-    <article class="card">
-      <div class="card-meta">Recovery</div>
-      <h3 class="card-title">Mobility in 10 minutes</h3>
-      <p class="card-desc">Quick routine that covers the basics.</p>
-    </article>
-  </div>
 </section>
