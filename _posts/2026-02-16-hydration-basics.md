@@ -171,7 +171,7 @@ That’s it.
 
 ---
 
-## Quick FAQ (SEO-friendly, real answers)
+## Quick FAQ (Real answers)
 
 ### Is 2 liters of water a day enough?
 For many people, yes — **as a baseline**. If you train, sweat heavily, or it’s hot, you’ll often need more.
