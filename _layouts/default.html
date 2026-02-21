@@ -13,65 +13,50 @@
   {% endif %}
 
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
-
   <meta name="theme-color" content="#0b0f14" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google AdSense verification / loader -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3802348795219382"
-    crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="{{ "/" | relative_url }}">
-        <span class="brand-mark">★</span>
-        <span class="brand-text">{{ site.title }}</span>
-      </a>
+  <!-- Fixed (anchored) background + glows (never scroll) -->
+  <div class="bg-fixed" aria-hidden="true"></div>
 
-      <nav class="nav">
-        <a href="{{ "/" | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a>
-        <a href="{{ "/blog/" | relative_url }}" class="nav-link {% if page.url contains '/blog/' %}active{% endif %}">Blog</a>
-        <a href="{{ "/hydration/" | relative_url }}" class="nav-link {% if page.url contains '/hydration/' %}active{% endif %}">Hydration</a>
-        <a href="{{ "/training/" | relative_url }}" class="nav-link {% if page.url contains '/training/' %}active{% endif %}">Training</a>
-        <a href="{{ "/recovery/" | relative_url }}" class="nav-link {% if page.url contains '/recovery/' %}active{% endif %}">Recovery</a>
-        <a href="{{ "/about/" | relative_url }}" class="nav-link {% if page.url contains '/about/' %}active{% endif %}">About</a>
-      </nav>
-    </div>
-  </header>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <span class="brand-badge" aria-hidden="true">★</span>
+          <span class="brand-text">{{ site.title }}</span>
+        </a>
 
-  <div class="page">
-    <div class="container">
-      <div class="shell">
-        <div class="content">
-          {{ content }}
-        </div>
+        <nav class="nav">
+          <a class="nav-link" href="{{ '/' | relative_url }}">Home</a>
+          <a class="nav-link" href="{{ '/blog/' | relative_url }}">Blog</a>
+          <a class="nav-link" href="{{ '/hydration/' | relative_url }}">Hydration</a>
+          <a class="nav-link" href="{{ '/training/' | relative_url }}">Training</a>
+          <a class="nav-link" href="{{ '/recovery/' | relative_url }}">Recovery</a>
+          <a class="nav-link" href="{{ '/about/' | relative_url }}">About</a>
+        </nav>
       </div>
-    </div>
+    </header>
+
+    <!-- Only this area scrolls -->
+    <main class="site-main" id="content">
+      <div class="content-wrap">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span>© {{ site.time | date: "%Y" }} Stellar Lift</span>
+      </div>
+    </footer>
   </div>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <div class="footer-brand">Stellar Lift</div>
-        <div>© <span id="year"></span> Stellar Lift. All rights reserved.</div>
-      </div>
-      <div class="footer-right">
-        <a href="{{ "/privacy/" | relative_url }}">Privacy</a>
-        <a href="{{ "/cookies/" | relative_url }}">Cookies</a>
-        <a href="{{ "/contact/" | relative_url }}">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
