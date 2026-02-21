@@ -18,7 +18,6 @@
   --shadow: 0 18px 55px rgba(0,0,0,.55);
   --radius: 18px;
 
-  /* Szerokość contentu + stałe boczne marginesy */
   --maxw: 1120px;
   --gutter: 24px;
 }
@@ -31,9 +30,7 @@ body{
   font-family: "Exo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
-
-  /* body NIE scrolluje */
-  overflow: hidden;
+  overflow: hidden; /* scroll tylko w .site-main */
 }
 
 /* Fixed anchored background */
@@ -74,7 +71,7 @@ body{
   flex-direction: column;
 }
 
-/* ====== JEDEN KONTENER NA MARGINESY ====== */
+/* Jeden kontener na marginesy */
 .site-header-inner,
 .content-wrap,
 .site-footer-inner{
@@ -148,13 +145,12 @@ body{
   background: rgba(255,255,255,.04);
 }
 
-/* Main scroll container
-   (UWAGA: tylko padding pionowy, boczne robi content-wrap) */
+/* Main scroll container */
 .site-main{
   flex: 1 1 auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 26px 0 42px; /* ZERO left/right */
+  padding: 26px 0 42px; /* zero left/right */
 }
 
 /* Footer */
@@ -257,6 +253,125 @@ pre{
   border: 1px solid rgba(255,255,255,.10);
   overflow:auto;
 }
+
+/* =========================================================
+   PRZYWRÓCENIE "KAFELKÓW" (Blog / sekcje / listy postów)
+   Działa na najczęstszych klasach: cards, grid, post-list,
+   post-card, post-item — bez grzebania w HTML.
+   ========================================================= */
+
+/* Uniwersalna siatka */
+.grid,
+.cards,
+.post-grid,
+.post-list{
+  display: grid;
+  gap: 18px;
+}
+
+/* 3 kolumny na desktop, 2 na średnich, 1 na mobile */
+.grid,
+.cards,
+.post-grid,
+.post-list{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 980px){
+  .grid, .cards, .post-grid, .post-list{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 680px){
+  .grid, .cards, .post-grid, .post-list{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Kafelki: wspieramy różne nazwy elementów */
+.card,
+.post-card,
+.post-item,
+.post{
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 18px 55px rgba(0,0,0,.45);
+  padding: 16px 16px 14px;
+  min-height: 160px;
+}
+
+/* Jeśli element jest linkiem (a bywa), niech wygląda jak kafelek */
+.card a,
+.post-card a,
+.post-item a{
+  text-decoration: none;
+}
+
+/* Kategoria / label w kafelku */
+.card .eyebrow,
+.post-card .eyebrow,
+.post-item .eyebrow{
+  margin-bottom: 10px;
+}
+
+/* Tytuł */
+.card h3,
+.post-card h3,
+.post-item h3,
+.post-card-title{
+  margin: 4px 0 8px;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+/* Link w tytule — żółty jak na Twoich kartach */
+.card h3 a,
+.post-card h3 a,
+.post-item h3 a,
+.post-card-title a{
+  color: rgba(255,176,0,.95);
+}
+.card h3 a:hover,
+.post-card h3 a:hover,
+.post-item h3 a:hover,
+.post-card-title a:hover{
+  color: #ffe2a0;
+}
+
+/* Opis */
+.card p,
+.post-card p,
+.post-item p,
+.post-excerpt{
+  color: rgba(231,237,246,.74);
+  margin-bottom: 10px;
+}
+
+/* Data / meta */
+.post-meta,
+.card .meta,
+.post-card .meta,
+.post-item .meta{
+  font-size: 13px;
+  color: rgba(231,237,246,.55);
+}
+
+/* Hover — delikatny lift */
+.card:hover,
+.post-card:hover,
+.post-item:hover{
+  border-color: rgba(255,176,0,.22);
+  box-shadow: 0 22px 70px rgba(0,0,0,.55);
+  transform: translateY(-1px);
+  transition: .12s ease;
+}
+
+/* Jeśli gdzieś masz listę bez wrappera grid — to ją “spłaszczamy” do kart */
+.section-list > *{
+  margin-bottom: 16px;
+}
+
+/* ========================================================= */
 
 /* Responsive */
 @media (max-width: 720px){
