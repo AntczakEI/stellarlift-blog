@@ -3,9 +3,9 @@
   --bg-2: #070a0f;
 
   /* PODBITE kolory */
-  --accent: #ffb000;      /* mocniejszy złoto-pomarańcz */
-  --accent-2: #ff6a00;    /* bardziej soczysty pomarańcz */
-  --accent-3: #ffd36a;    /* jasny highlight */
+  --accent: #ffb000;
+  --accent-2: #ff6a00;
+  --accent-3: #ffd36a;
 
   --text: #e7edf6;
   --muted: rgba(231,237,246,.72);
@@ -18,38 +18,36 @@
   --shadow: 0 18px 55px rgba(0,0,0,.55);
   --radius: 18px;
 
-  --maxw: 980px;
+  /* Szerokość contentu + stałe boczne marginesy */
+  --maxw: 1120px;
+  --gutter: 24px;
 }
 
-/* Base */
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
+
 body{
   margin:0;
   font-family: "Exo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
 
-  /* KLUCZ: body NIE scrolluje */
+  /* body NIE scrolluje */
   overflow: hidden;
 }
 
-/* Fixed anchored background (never scrolls) */
+/* Fixed anchored background */
 .bg-fixed{
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-
-  /* Stable base gradient */
   background:
     radial-gradient(900px 520px at 12% 18%, rgba(255,176,0,.22), transparent 60%),
     radial-gradient(760px 520px at 88% 72%, rgba(255,106,0,.16), transparent 62%),
     radial-gradient(520px 420px at 78% 18%, rgba(255,211,106,.10), transparent 62%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
 }
-
-/* Extra glows + vignette pinned to viewport */
 .bg-fixed::before{
   content:"";
   position:absolute;
@@ -69,11 +67,22 @@ body{
   opacity: .9;
 }
 
-/* Layout shell: header fixed-ish, main scroll */
+/* Shell */
 .page-shell{
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* ====== JEDEN KONTENER NA MARGINESY ====== */
+.site-header-inner,
+.content-wrap,
+.site-footer-inner{
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
 /* Header */
@@ -87,9 +96,8 @@ body{
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .site-header-inner{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 14px 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -140,16 +148,13 @@ body{
   background: rgba(255,255,255,.04);
 }
 
-/* Main scroll container */
+/* Main scroll container
+   (UWAGA: tylko padding pionowy, boczne robi content-wrap) */
 .site-main{
   flex: 1 1 auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 26px 18px 42px;
-}
-.content-wrap{
-  max-width: var(--maxw);
-  margin: 0 auto;
+  padding: 26px 0 42px; /* ZERO left/right */
 }
 
 /* Footer */
@@ -160,36 +165,24 @@ body{
   backdrop-filter: blur(10px);
 }
 .site-footer-inner{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 14px 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   color: rgba(231,237,246,.60);
   font-size: 14px;
 }
 
 /* Typography */
-h1, h2, h3{
-  letter-spacing: .1px;
-}
-h1{
-  margin: 10px 0 14px;
-  font-size: 40px;
-  line-height: 1.12;
-}
-h2{
-  margin: 34px 0 10px;
-  font-size: 24px;
-  line-height: 1.2;
-}
-h3{
-  margin: 20px 0 8px;
-  font-size: 18px;
-}
+h1, h2, h3{ letter-spacing: .1px; }
+h1{ margin: 10px 0 14px; font-size: 40px; line-height: 1.12; }
+h2{ margin: 34px 0 10px; font-size: 24px; line-height: 1.2; }
+h3{ margin: 20px 0 8px; font-size: 18px; }
+
 p{
   margin: 0 0 14px;
   color: rgba(231,237,246,.86);
   line-height: 1.65;
 }
+
 a{ color: var(--accent-3); }
 a:hover{ color: #ffe2a0; }
 
@@ -200,7 +193,6 @@ hr{
   margin: 24px 0;
 }
 
-/* Eyebrow label */
 .eyebrow{
   margin: 0 0 10px;
   display:inline-block;
@@ -211,14 +203,13 @@ hr{
   color: rgba(255,176,0,.95);
 }
 
-/* Lists */
 ul, ol{
   margin: 0 0 14px 18px;
   color: rgba(231,237,246,.86);
 }
 li{ margin: 6px 0; }
 
-/* Call-to-action block */
+/* CTA */
 .hero-cta{
   margin-top: 28px;
   padding: 18px;
@@ -252,9 +243,7 @@ li{ margin: 6px 0; }
   border: 1px solid rgba(255,255,255,.14);
   box-shadow: none;
 }
-.btn-ghost:hover{
-  background: rgba(255,255,255,.08);
-}
+.btn-ghost:hover{ background: rgba(255,255,255,.08); }
 
 /* Code blocks */
 code, pre{
@@ -271,6 +260,7 @@ pre{
 
 /* Responsive */
 @media (max-width: 720px){
+  :root{ --gutter: 16px; }
   h1{ font-size: 32px; }
   .nav{ gap: 8px; }
   .nav-link{ padding: 7px 9px; }
